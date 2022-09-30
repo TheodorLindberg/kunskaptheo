@@ -11,8 +11,8 @@ namespace Kunskapsspel
     internal class TimerClass
     {
         Timer timer;
-        MovmentClass movment;
-        public TimerClass(MovmentClass movment)
+        MovementClass movment;
+        public TimerClass(MovementClass movment)
         {
             this.movment = movment;
             timer = new Timer()

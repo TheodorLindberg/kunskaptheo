@@ -17,8 +17,9 @@ namespace Kunskapsspel
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
-            MovmentClass mv = new MovmentClass(this);
+            MovementClass mv = new MovementClass(this);
             TimerClass timer = new TimerClass(mv);
+            InteractableObject interactableObject = new InteractableObject(new Point(0, 0), new Size(300, 200), this);
 
             SetUP();
         }
@@ -33,6 +34,11 @@ namespace Kunskapsspel
                 SizeMode = PictureBoxSizeMode.StretchImage,
             };
             this.Controls.Add(tempPb);
+        }
+
+        private void GameForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -54,7 +54,10 @@
     <Compile Include="GameForm.Designer.cs">
       <DependentUpon>GameForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Movment.cs" />
+    <Compile Include="Interact.cs" />
+    <Compile Include="InteractableObject.cs" />
+    <Compile Include="MovementClass.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TimerClass.cs" />

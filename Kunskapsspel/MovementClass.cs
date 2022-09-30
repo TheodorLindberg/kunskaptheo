@@ -11,23 +11,24 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
 namespace Kunskapsspel
 {
-    internal class MovmentClass
+    internal class MovementClass
     {
         private const int movementSpeed = 30;
         GameForm form;
-        public MovmentClass(GameForm form)
-        {
-            this.form = form;
-        }
         const Key forwardKey = Key.W;
         const Key leftKey = Key.A;
         const Key backwardsKey = Key.S;
         const Key rightKey = Key.D;
-
+        PictureBox backGround;
+        public MovementClass(GameForm form)
+        {
+            this.form = form;
+            
+        }
 
         private Tuple<int, int> GetDestination()
         {
-            PictureBox backGround = form.tempPb;
+            backGround = form.tempPb;
             int x = backGround.Location.X;
             int y = backGround.Location.Y;
 
@@ -45,9 +46,8 @@ namespace Kunskapsspel
 
         internal void Move()
         {
+            backGround = form.tempPb;
             (int x, int y) = GetDestination();
-
-            PictureBox backGround = form.tempPb;
             backGround.Location = new Point(x, y);
         }
     }
