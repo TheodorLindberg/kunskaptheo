@@ -28,7 +28,7 @@ namespace Kunskapsspel
 
         private Tuple<int, int> GetDestination()
         {
-            backGround = form.tempPb;
+            backGround = form.tempBackgroundPb;
             int x = backGround.Location.X;
             int y = backGround.Location.Y;
 
@@ -46,7 +46,7 @@ namespace Kunskapsspel
 
         internal void Move()
         {
-            backGround = form.tempPb;
+            backGround = form.tempBackgroundPb;
             (int x, int y) = GetDestination();
             backGround.Location = new Point(x, y);
         }

@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace Kunskapsspel
 {
-    internal class InteractableObject
+    public class InteractableObject
     {
-        PictureBox itemBody;
-        GameForm form;
+        public PictureBox itemBody;
+        private readonly GameForm form;
         public InteractableObject(Point ItemTopLeftPoint, Size ItemSize, GameForm form)
         {
             this.form = form;
@@ -23,10 +23,10 @@ namespace Kunskapsspel
         {
             itemBody = new PictureBox()
             {
-                Name = "item",
                 Location = ItemTopLeftPoint,
                 Size = ItemSize,
                 Image = Image.FromFile("Capybara.jpg"),
+                SizeMode = PictureBoxSizeMode.StretchImage,
             };
             form.Controls.Add(itemBody);
         }

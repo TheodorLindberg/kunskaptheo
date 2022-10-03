@@ -12,7 +12,7 @@ namespace Kunskapsspel
 {
     public partial class GameForm : Form
     {
-        public PictureBox tempPb;
+        public PictureBox tempBackgroundPb;
         public GameForm()
         {
             InitializeComponent();
@@ -21,24 +21,20 @@ namespace Kunskapsspel
             TimerClass timer = new TimerClass(mv);
             InteractableObject interactableObject = new InteractableObject(new Point(0, 0), new Size(300, 200), this);
 
-            SetUP();
+            SetUp();
         }
 
-        private void SetUP()
+        private void SetUp()
         {
-            tempPb = new PictureBox()
+            tempBackgroundPb = new PictureBox()
             {
                 Size = new Size(3000, 3000),
                 Location = new Point(0, 0),
                 Image = Image.FromFile("Capybara.jpg"),
                 SizeMode = PictureBoxSizeMode.StretchImage,
             };
-            this.Controls.Add(tempPb);
+            this.Controls.Add(tempBackgroundPb);
         }
 
-        private void GameForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

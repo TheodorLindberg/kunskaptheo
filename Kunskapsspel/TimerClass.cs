@@ -10,8 +10,8 @@ namespace Kunskapsspel
 {
     internal class TimerClass
     {
-        Timer timer;
-        MovementClass movment;
+        private readonly Timer timer;
+        private readonly MovementClass movment;
         public TimerClass(MovementClass movment)
         {
             this.movment = movment;
@@ -27,9 +27,12 @@ namespace Kunskapsspel
         private void TickEvent(object sender, EventArgs e)
         {
             movment.Move();
-
-
-
         }
+
+        public void Stop()
+        {
+            timer.Stop();
+        }
+
     }
 }
