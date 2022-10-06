@@ -13,15 +13,38 @@ namespace Kunskapsspel
     public partial class GameForm : Form
     {
         public PictureBox tempBackgroundPb;
+        public InteractableObject interactableObject;
+        private InteractClass interact;
+        private bool spaceDown = false;
         public GameForm()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
-            MovementClass mv = new MovementClass(this);
+            MovementClass mv = new MovementClass(this);                  // Can remove form parameter when you add grafical class
             TimerClass timer = new TimerClass(mv);
-            InteractableObject interactableObject = new InteractableObject(new Point(0, 0), new Size(300, 200), this);
+            interact = new InteractClass();
+
+            KeyDown += GameForm_KeyDown;
+            KeyUp += GameForm_KeyUp;
 
             SetUp();
+        }
+
+        private void GameForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Space)
+                spaceDown = false;
+        }
+
+        private void GameForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (spaceDown)
+                return;
+            if (e.KeyData == Keys.Space)
+            {
+                interact.Interact(interactableObject);
+                spaceDown = true;
+            }
         }
 
         private void SetUp()

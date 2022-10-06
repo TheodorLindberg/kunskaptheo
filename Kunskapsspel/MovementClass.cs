@@ -14,23 +14,23 @@ namespace Kunskapsspel
     internal class MovementClass
     {
         private const int movementSpeed = 30;
-        GameForm form;
+        readonly GameForm form;
+        readonly InteractableObject interactableObject;
         const Key forwardKey = Key.W;
         const Key leftKey = Key.A;
         const Key backwardsKey = Key.S;
         const Key rightKey = Key.D;
-        PictureBox backGround;
         public MovementClass(GameForm form)
         {
             this.form = form;
-            
+            interactableObject = new InteractableObject(new Point(0, 0), new Size(300, 200), form);
+            form.interactableObject = interactableObject;
         }
 
-        private Tuple<int, int> GetDestination()
+        private Tuple<int, int> GetOffset()
         {
-            backGround = form.tempBackgroundPb;
-            int x = backGround.Location.X;
-            int y = backGround.Location.Y;
+            int x = 0;
+            int y = 0;
 
             if (Keyboard.IsKeyDown(forwardKey))
                 y += movementSpeed;
@@ -46,9 +46,13 @@ namespace Kunskapsspel
 
         internal void Move()
         {
-            backGround = form.tempBackgroundPb;
-            (int x, int y) = GetDestination();
-            backGround.Location = new Point(x, y);
+            (int x, int y) = GetOffset();
+
+
+            interactableObject.itemBody.Location = new Point(interactableObject.itemBody.Location.X + x, interactableObject.itemBody.Location.Y + y);
+
+
+            form.tempBackgroundPb.Location = new Point(form.tempBackgroundPb.Location.X + x, form.tempBackgroundPb.Location.Y + y);
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Kunskapsspel
     {
         public PictureBox itemBody;
         private readonly GameForm form;
+        public bool isCurrentlyInUse = false;
         public InteractableObject(Point ItemTopLeftPoint, Size ItemSize, GameForm form)
         {
             this.form = form;
@@ -29,6 +30,14 @@ namespace Kunskapsspel
                 SizeMode = PictureBoxSizeMode.StretchImage,
             };
             form.Controls.Add(itemBody);
+        }
+
+        public bool CanBeInteractedWith()
+        {
+            if (itemBody.Location.Y <= 500)
+                return false;
+
+            return true;
         }
     }
 }
