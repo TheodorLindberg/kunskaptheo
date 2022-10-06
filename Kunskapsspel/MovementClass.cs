@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,19 +14,13 @@ namespace Kunskapsspel
 {
     internal class MovementClass
     {
-        private const int movementSpeed = 30;
-        readonly GameForm form;
-        readonly InteractableObject interactableObject;
+        private const int movementSpeed = 35;
         const Key forwardKey = Key.W;
         const Key leftKey = Key.A;
         const Key backwardsKey = Key.S;
         const Key rightKey = Key.D;
-        public MovementClass(GameForm form)
-        {
-            this.form = form;
-            interactableObject = new InteractableObject(new Point(0, 0), new Size(300, 200), form);
-            form.interactableObject = interactableObject;
-        }
+        public MovementClass() { }
+        
 
         private Tuple<int, int> GetOffset()
         {
@@ -44,15 +39,27 @@ namespace Kunskapsspel
             return Tuple.Create(x, y);
         }
 
-        internal void Move()
+        internal void Move(PictureBox background, List<PictureBox> interactableObjects)
         {
             (int x, int y) = GetOffset();
 
+            if (!CanMoveTo(background.Size, background.Location.X + x, background.Location.Y + y))
+                return;
 
-            interactableObject.itemBody.Location = new Point(interactableObject.itemBody.Location.X + x, interactableObject.itemBody.Location.Y + y);
+            foreach (PictureBox pb in interactableObjects)
+            {
+                pb.Location = new Point(pb.Location.X + x, pb.Location.Y + y);
+            }
+            background.Location = new Point(background.Location.X + x, background.Location.Y + y);
+        }
 
+        public bool CanMoveTo(Size backgroundSize ,int x, int y)
+        {
 
-            form.tempBackgroundPb.Location = new Point(form.tempBackgroundPb.Location.X + x, form.tempBackgroundPb.Location.Y + y);
+            if ((0 >= x && x >= - (backgroundSize.Width - Screen.PrimaryScreen.Bounds.Width)) && (0 >= y && y >= -(backgroundSize.Height - Screen.PrimaryScreen.Bounds.Height)))
+                return true;
+
+            return false;
         }
     }
 }

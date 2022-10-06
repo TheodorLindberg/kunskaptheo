@@ -12,12 +12,12 @@ namespace Kunskapsspel
     internal class Player
     {
         public PictureBox body;
-        public Player()
+        public Player(Form form)
         {
-            CreateBody();
+            CreateBody(form);
         }
 
-        private void CreateBody()
+        private void CreateBody(Form form)
         {
             body = new PictureBox()
             {
@@ -26,8 +26,8 @@ namespace Kunskapsspel
                 Image = Image.FromFile("Capybara.jpg"),
                 SizeMode = PictureBoxSizeMode.StretchImage,
             };
-
-
+            form.Controls.Add(body);
+            body.BringToFront();
         }
     }
 }
