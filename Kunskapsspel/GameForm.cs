@@ -23,6 +23,9 @@ namespace Kunskapsspel
             MovementClass mv = new MovementClass(this);                  // Can remove form parameter when you add grafical class
             TimerClass timer = new TimerClass(mv);
             interact = new InteractClass();
+            Player player = new Player();
+            Controls.Add(player.body);
+            
 
             KeyDown += GameForm_KeyDown;
             KeyUp += GameForm_KeyUp;
