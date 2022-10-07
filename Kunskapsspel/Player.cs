@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Kunskapsspel
 {
-    internal class Player
+    public class Player
     {
         public PictureBox body;
         private Size bodySize = new Size(200,200);

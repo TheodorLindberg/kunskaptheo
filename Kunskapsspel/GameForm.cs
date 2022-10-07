@@ -16,6 +16,7 @@ namespace Kunskapsspel
         public InteractableObject interactableObject;
         private readonly InteractClass interact;
         private bool spaceDown = false;
+        Player player;
         public GameForm()
         {
             InitializeComponent();
@@ -23,7 +24,7 @@ namespace Kunskapsspel
 
             TimerClass timer = new TimerClass(new TestScene(this));
             interact = new InteractClass();
-            Player player = new Player(this, Image.FromFile("Capybara.jpg"));
+            player = new Player(this, Image.FromFile("Capybara.jpg"));
             
 
 
@@ -43,7 +44,7 @@ namespace Kunskapsspel
                 return;
             if (e.KeyData == Keys.Space)
             {
-                interact.Interact(interactableObject);
+                interact.Interact(interactableObject, player);
                 spaceDown = true;
             }
         }

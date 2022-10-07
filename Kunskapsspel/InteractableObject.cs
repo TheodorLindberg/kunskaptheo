@@ -32,11 +32,11 @@ namespace Kunskapsspel
             form.Controls.Add(itemBody);
         }
 
-        public bool CanBeInteractedWith()                               // Change
+        public bool CanBeInteractedWith(Player player)                               // Change
         {
             if (itemBody.Location.Y <= 500)
                 return false;
-
+            
             return true;
         }
     }
