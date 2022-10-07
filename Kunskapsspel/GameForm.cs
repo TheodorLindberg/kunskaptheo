@@ -23,7 +23,7 @@ namespace Kunskapsspel
 
             TimerClass timer = new TimerClass(new TestScene(this));
             interact = new InteractClass();
-            Player player = new Player(this);
+            Player player = new Player(this, Image.FromFile("Capybara.jpg"));
             
 
 

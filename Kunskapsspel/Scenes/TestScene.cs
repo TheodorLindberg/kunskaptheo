@@ -33,17 +33,10 @@ namespace Kunskapsspel.Scenes
         {
             for (int i = 1; i <= 4; i++)
             {
-                PictureBox interactableObject = new PictureBox()
-                {
-                    Size = new Size(300, 100),
-                    Location = new Point(500 + 500 * i, 1000),
-                    Image = Image.FromFile("Capybara.jpg"),
-                    SizeMode = PictureBoxSizeMode.StretchImage,
-                };
-                gameForm.Controls.Add(interactableObject);
-                interactableObject.BringToFront();
-                allPictureBoxes.Add(interactableObject);
-                interactableObjects.Add(interactableObject);
+                InteractableObject interactableObject = new InteractableObject(new Point(1500 * i, 500), new Size(300,300),Image.FromFile("Capybara.jpg"), gameForm);
+                interactableObject.itemBody.BringToFront();
+                allPictureBoxes.Add(interactableObject.itemBody);
+                interactableObjects.Add(interactableObject.itemBody);
             }
         }
     }

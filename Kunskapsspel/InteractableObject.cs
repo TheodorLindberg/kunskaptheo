@@ -14,25 +14,25 @@ namespace Kunskapsspel
         public PictureBox itemBody;
         private readonly GameForm form;
         public bool isCurrentlyInUse = false;
-        public InteractableObject(Point ItemTopLeftPoint, Size ItemSize, GameForm form)
+        public InteractableObject(Point ItemTopLeftPoint, Size ItemSize, Image image, GameForm form)
         {
             this.form = form;
-            CreateBody(ItemTopLeftPoint, ItemSize);
+            CreateBody(ItemTopLeftPoint, ItemSize, image);
         }
 
-        public void CreateBody(Point ItemTopLeftPoint, Size ItemSize)
+        public void CreateBody(Point ItemTopLeftPoint, Size ItemSize, Image image)
         {
             itemBody = new PictureBox()
             {
                 Location = ItemTopLeftPoint,
                 Size = ItemSize,
-                Image = Image.FromFile("Capybara.jpg"),
+                Image = image,
                 SizeMode = PictureBoxSizeMode.StretchImage,
             };
             form.Controls.Add(itemBody);
         }
 
-        public bool CanBeInteractedWith()
+        public bool CanBeInteractedWith()                               // Change
         {
             if (itemBody.Location.Y <= 500)
                 return false;

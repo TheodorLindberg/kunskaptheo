@@ -39,7 +39,7 @@ namespace Kunskapsspel
             return Tuple.Create(x, y);
         }
 
-        internal void Move(PictureBox background, List<PictureBox> interactableObjects)
+        public void Move(PictureBox background, List<PictureBox> interactableObjects)
         {
             (int x, int y) = GetOffset();
 
@@ -47,16 +47,14 @@ namespace Kunskapsspel
                 return;
 
             foreach (PictureBox pb in interactableObjects)
-            {
                 pb.Location = new Point(pb.Location.X + x, pb.Location.Y + y);
-            }
+
             background.Location = new Point(background.Location.X + x, background.Location.Y + y);
         }
 
-        public bool CanMoveTo(Size backgroundSize ,int x, int y)
+        private bool CanMoveTo(Size backgroundSize ,int x, int y)
         {
-
-            if ((0 >= x && x >= - (backgroundSize.Width - Screen.PrimaryScreen.Bounds.Width)) && (0 >= y && y >= -(backgroundSize.Height - Screen.PrimaryScreen.Bounds.Height)))
+            if (0 >= x && x >= - (backgroundSize.Width - Screen.PrimaryScreen.Bounds.Width) && 0 >= y && y >= -(backgroundSize.Height - Screen.PrimaryScreen.Bounds.Height))            //Refactor
                 return true;
 
             return false;

@@ -28,8 +28,6 @@ namespace Kunskapsspel
             btn.Click += CreateTimer;
             testScene.gameForm.Controls.Add(btn);
             btn.BringToFront();
-
-
         }
 
         private void CreateTimer(object sender, EventArgs e)
