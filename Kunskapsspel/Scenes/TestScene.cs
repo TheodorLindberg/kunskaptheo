@@ -36,7 +36,7 @@ namespace Kunskapsspel.Scenes
                 InteractableObject interactableObject = new InteractableObject(new Point(1500 * i, 500), new Size(300,300),Image.FromFile("Capybara.jpg"), gameForm);
                 interactableObject.itemBody.BringToFront();
                 allPictureBoxes.Add(interactableObject.itemBody);
-                interactableObjects.Add(interactableObject.itemBody);
+                interactableObjects.Add(interactableObject);
             }
         }
     }

@@ -17,18 +17,20 @@ namespace Kunskapsspel
 
         }
 
-        public void Interact(InteractableObject interactableObject, Player player)
+        public void Interact(List<InteractableObject> interactableObjects, Player player)
         {
             if (!Keyboard.IsKeyDown(Key.Space))
                 return;
-
-            if (interactableObject.CanBeInteractedWith(player))
+            foreach (InteractableObject interactableObject in interactableObjects)
             {
-                Debug.WriteLine("ja");
-            }
-            else
-            {
-                Debug.WriteLine("nej");
+                if (interactableObject.CanBeInteractedWith(player))
+                {
+                    Debug.WriteLine("ja");
+                }
+                else
+                {
+                    Debug.WriteLine("nej");
+                }
             }
         }
     }

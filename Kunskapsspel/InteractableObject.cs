@@ -14,6 +14,24 @@ namespace Kunskapsspel
         public PictureBox itemBody;
         private readonly GameForm form;
         public bool isCurrentlyInUse = false;
+
+        public int LeftX
+        {
+            get
+            {
+                return itemBody.Location.X;
+            }
+            set { }
+        }
+        public int RightX
+        {
+            get
+            {
+                return itemBody.Location.X + itemBody.Width;
+            }
+            set { }
+        }
+
         public InteractableObject(Point ItemTopLeftPoint, Size ItemSize, Image image, GameForm form)
         {
             this.form = form;
@@ -32,12 +50,38 @@ namespace Kunskapsspel
             form.Controls.Add(itemBody);
         }
 
-        public bool CanBeInteractedWith(Player player)                               // Change
+        public bool CanBeInteractedWith(Player player)                              // Change
         {
-            if (itemBody.Location.Y <= 500)
+            if (IsPointInbetween(LeftX, RightX, player.LeftLocation) || IsPointInbetween(LeftX, RightX, player.RightLocation))
                 return false;
             
             return true;
+        }
+        private int highPoint = 0;
+        private int lowPoint = 0;
+        private bool IsPointInbetween(int pointA, int pointB, int comparePoint)
+        {
+            if (pointA == pointB)
+            {
+                MessageBox.Show("Error");
+                return false;
+            }
+
+            if (pointA > pointB)
+            {
+                highPoint = pointA;
+                lowPoint = pointB;
+            }
+            else
+            {
+                highPoint = pointB;
+                lowPoint = pointA;
+            }
+
+            if (lowPoint <= comparePoint && highPoint >= comparePoint)
+                return true;
+
+            return false;
         }
     }
 }

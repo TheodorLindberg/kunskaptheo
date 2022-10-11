@@ -13,16 +13,17 @@ namespace Kunskapsspel
 {
     public partial class GameForm : Form
     {
-        public InteractableObject interactableObject;
         private readonly InteractClass interact;
         private bool spaceDown = false;
         Player player;
+        TestScene testScene;
         public GameForm()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
 
-            TimerClass timer = new TimerClass(new TestScene(this));
+            testScene = new TestScene(this);
+            TimerClass timer = new TimerClass(testScene);
             interact = new InteractClass();
             player = new Player(this, Image.FromFile("Capybara.jpg"));
             
@@ -44,7 +45,7 @@ namespace Kunskapsspel
                 return;
             if (e.KeyData == Keys.Space)
             {
-                interact.Interact(interactableObject, player);
+                interact.Interact(testScene.interactableObjects, player);
                 spaceDown = true;
             }
         }

@@ -13,6 +13,23 @@ namespace Kunskapsspel
     {
         public PictureBox body;
         private Size bodySize = new Size(200,200);
+
+        public int LeftLocation 
+        { 
+            get
+            {
+                return body.Location.X;
+            } 
+            set { }
+        }
+        public int RightLocation
+        {
+            get
+            {
+                return body.Location.X + body.Width;
+            }
+            set { }
+        }
         public Player(Form form, Image image)
         {
             CreateBody(form, image);

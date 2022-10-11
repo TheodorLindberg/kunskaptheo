@@ -39,15 +39,15 @@ namespace Kunskapsspel
             return Tuple.Create(x, y);
         }
 
-        public void Move(PictureBox background, List<PictureBox> interactableObjects)
+        public void Move(PictureBox background, List<InteractableObject> interactableObjects)
         {
             (int x, int y) = GetOffset();
 
             if (!CanMoveTo(background.Size, background.Location.X + x, background.Location.Y + y))
                 return;
 
-            foreach (PictureBox pb in interactableObjects)
-                pb.Location = new Point(pb.Location.X + x, pb.Location.Y + y);
+            foreach (InteractableObject pb in interactableObjects)
+                pb.itemBody.Location = new Point(pb.itemBody.Location.X + x, pb.itemBody.Location.Y + y);
 
             background.Location = new Point(background.Location.X + x, background.Location.Y + y);
         }

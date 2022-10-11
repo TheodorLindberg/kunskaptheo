@@ -10,7 +10,7 @@ namespace Kunskapsspel
     public class GraficalScene
     {
         public PictureBox background;
-        public List<PictureBox> interactableObjects = new List<PictureBox>();
+        public List<InteractableObject> interactableObjects = new List<InteractableObject>();
         public List<PictureBox> allPictureBoxes = new List<PictureBox>();
         public GameForm gameForm;
 
