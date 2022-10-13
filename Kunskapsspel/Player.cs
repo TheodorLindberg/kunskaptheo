@@ -30,6 +30,16 @@ namespace Kunskapsspel
             }
             set { }
         }
+
+        public int TopLocation
+        {
+            get
+            {
+                return body.Location.Y;
+            }
+            set { }
+        }
+
         public Player(Form form, Image image)
         {
             CreateBody(form, image);

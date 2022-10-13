@@ -57,6 +57,12 @@
     <Compile Include="GraficalScene.cs" />
     <Compile Include="Interact.cs" />
     <Compile Include="InteractableObject.cs" />
+    <Compile Include="LearningTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LearningTime.Designer.cs">
+      <DependentUpon>LearningTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="MovementClass.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />

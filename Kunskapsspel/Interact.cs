@@ -25,10 +25,9 @@ namespace Kunskapsspel
             {
                 if (interactableObject.CanBeInteractedWith(player))
                 {
-                    MessageBox.Show("ja");
-
+                    LearningTime learningTime = new LearningTime();
+                    learningTime.Show();
                 }
-                
             }
         }
     }

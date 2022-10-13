@@ -31,6 +31,23 @@ namespace Kunskapsspel
             }
             set { }
         }
+        public int Top
+        {
+            get
+            {
+                return itemBody.Location.Y;
+            }
+            set { }
+        }
+        public int Bot
+        {
+            get
+            {
+                return itemBody.Location.Y + itemBody.Height;
+            }
+            set { }
+        }
+
 
         public InteractableObject(Point ItemTopLeftPoint, Size ItemSize, Image image, GameForm form)
         {
@@ -52,14 +69,14 @@ namespace Kunskapsspel
 
         public bool CanBeInteractedWith(Player player)                              // Change
         {
-            if (IsPointInbetween(LeftX, RightX, player.LeftLocation) || IsPointInbetween(LeftX, RightX, player.RightLocation))
+            if ((PointInbetween(LeftX, RightX, player.LeftLocation) || PointInbetween(LeftX, RightX, player.RightLocation)) && PointInbetween(Bot, Top, player.TopLocation))
                 return true;
             
             return false;
         }
         private int highPoint = 0;
         private int lowPoint = 0;
-        private bool IsPointInbetween(int pointA, int pointB, int comparePoint)
+        private bool PointInbetween(int pointA, int pointB, int comparePoint)
         {
             if (pointA == pointB)
             {
