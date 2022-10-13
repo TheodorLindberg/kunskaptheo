@@ -13,9 +13,7 @@ namespace Kunskapsspel
 {
     public partial class GameForm : Form
     {
-        private readonly InteractClass interact;
-        private bool spaceDown = false;
-        Player player;
+        
         TestScene testScene;
         public GameForm()
         {
@@ -23,31 +21,8 @@ namespace Kunskapsspel
             this.WindowState = FormWindowState.Maximized;
 
             testScene = new TestScene(this);
-            TimerClass timer = new TimerClass(testScene);
-            interact = new InteractClass();
-            player = new Player(this, Image.FromFile("Capybara.jpg"));
+            TimerClass timer = new TimerClass(testScene, this);
             
-
-
-            KeyDown += GameForm_KeyDown;
-            KeyUp += GameForm_KeyUp;
-        }
-
-        private void GameForm_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData == Keys.Space)
-                spaceDown = false;
-        }
-
-        private void GameForm_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (spaceDown)
-                return;
-            if (e.KeyData == Keys.Space)
-            {
-                interact.Interact(testScene.interactableObjects, player);
-                spaceDown = true;
-            }
         }
     }
 }

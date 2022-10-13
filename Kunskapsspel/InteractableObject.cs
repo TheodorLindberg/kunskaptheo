@@ -53,9 +53,9 @@ namespace Kunskapsspel
         public bool CanBeInteractedWith(Player player)                              // Change
         {
             if (IsPointInbetween(LeftX, RightX, player.LeftLocation) || IsPointInbetween(LeftX, RightX, player.RightLocation))
-                return false;
+                return true;
             
-            return true;
+            return false;
         }
         private int highPoint = 0;
         private int lowPoint = 0;

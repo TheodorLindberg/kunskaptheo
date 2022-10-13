@@ -25,12 +25,10 @@ namespace Kunskapsspel
             {
                 if (interactableObject.CanBeInteractedWith(player))
                 {
-                    Debug.WriteLine("ja");
+                    MessageBox.Show("ja");
+
                 }
-                else
-                {
-                    Debug.WriteLine("nej");
-                }
+                
             }
         }
     }

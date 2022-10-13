@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace Kunskapsspel
@@ -15,23 +16,31 @@ namespace Kunskapsspel
         private Timer timer;
         private readonly MovementClass movmentClass;
         private readonly TestScene testScene;
-        public TimerClass(TestScene testScene)
+        private readonly GameForm gameForm;
+        private bool spaceDown = false;
+        private InteractClass interact;
+        Player player;
+        public TimerClass(TestScene testScene, GameForm gameForm)
         {
             this.testScene = testScene;
             movmentClass = new MovementClass();
+            this.gameForm = gameForm;
 
-            Button btn = new Button()
+        Button btn = new Button()
             {
                 Size = new Size(100,100),
                 Location = new Point(100,100),
             };
-            btn.Click += CreateTimer;
+            btn.Click += StartGame;
             testScene.gameForm.Controls.Add(btn);
             btn.BringToFront();
         }
 
-        private void CreateTimer(object sender, EventArgs e)
+        private void StartGame(object sender, EventArgs e)
         {
+            interact = new InteractClass();
+            player = new Player(gameForm, Image.FromFile("Capybara.jpg"));
+
             Button btn = (Button)sender;
             btn.Hide();
             timer = new Timer()
@@ -45,6 +54,22 @@ namespace Kunskapsspel
         private void TickEvent(object sender, EventArgs e)
         {
             movmentClass.Move(testScene.background, testScene.interactableObjects);
+            Interact();
+        }
+        private void Interact()
+        {
+            
+            if (spaceDown)
+                return;
+
+            if (Keyboard.IsKeyDown(Key.Space))
+            {
+                spaceDown = true;
+                interact.Interact(testScene.interactableObjects, player);
+            }
+
+            if (Keyboard.IsKeyUp(Key.Space))
+                spaceDown = false;
         }
 
         public void Stop()
