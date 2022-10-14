@@ -13,8 +13,7 @@ namespace Kunskapsspel
 {
     public partial class GameForm : Form
     {
-        
-        TestScene testScene;
+        readonly TestScene testScene;
         public GameForm()
         {
             InitializeComponent();
@@ -22,7 +21,10 @@ namespace Kunskapsspel
 
             testScene = new TestScene(this);
             TimerClass timer = new TimerClass(testScene, this);
-            
+
+            LearningTime learningTime = new LearningTime();
+            learningTime.Show();
+
         }
     }
 }

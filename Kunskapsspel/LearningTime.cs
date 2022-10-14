@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kunskapsspel.Scenes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,7 @@ namespace Kunskapsspel
 
             StartPosition = FormStartPosition.CenterScreen;
             Size = new Size(1000, Screen.PrimaryScreen.Bounds.Height);
+            LearningScene learningScene = new LearningScene(this);
         }
     }
 }

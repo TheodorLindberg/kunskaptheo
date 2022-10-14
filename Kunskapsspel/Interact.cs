@@ -25,6 +25,7 @@ namespace Kunskapsspel
             {
                 if (interactableObject.CanBeInteractedWith(player))
                 {
+                    MessageBox.Show("Interact succesfull");
                     LearningTime learningTime = new LearningTime();
                     learningTime.Show();
                 }

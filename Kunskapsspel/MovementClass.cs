@@ -21,7 +21,6 @@ namespace Kunskapsspel
         const Key rightKey = Key.D;
         public MovementClass() { }
         
-
         private Tuple<int, int> GetOffset()
         {
             int x = 0;

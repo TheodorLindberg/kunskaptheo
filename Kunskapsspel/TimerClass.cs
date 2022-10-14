@@ -23,10 +23,10 @@ namespace Kunskapsspel
         public TimerClass(TestScene testScene, GameForm gameForm)
         {
             this.testScene = testScene;
-            movmentClass = new MovementClass();
             this.gameForm = gameForm;
+            movmentClass = new MovementClass();
 
-        Button btn = new Button()
+            Button btn = new Button()
             {
                 Size = new Size(100,100),
                 Location = new Point(100,100),
@@ -58,7 +58,9 @@ namespace Kunskapsspel
         }
         private void Interact()
         {
-            
+            if (Keyboard.IsKeyUp(Key.Space))
+                spaceDown = false;
+
             if (spaceDown)
                 return;
 
@@ -67,15 +69,11 @@ namespace Kunskapsspel
                 spaceDown = true;
                 interact.Interact(testScene.interactableObjects, player);
             }
-
-            if (Keyboard.IsKeyUp(Key.Space))
-                spaceDown = false;
         }
 
         public void Stop()
         {
             timer.Stop();
         }
-
     }
 }
