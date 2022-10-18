@@ -13,6 +13,7 @@ namespace Kunskapsspel
 {
     public partial class LearningTime : Form
     {
+        public Label timeTextBox;
         public LearningTime()
         {
             InitializeComponent();
@@ -20,6 +21,7 @@ namespace Kunskapsspel
             StartPosition = FormStartPosition.CenterScreen;
             Size = new Size(1000, Screen.PrimaryScreen.Bounds.Height);
             LearningScene learningScene = new LearningScene(this);
+            LearningLogic learningLogic = new LearningLogic(this);
         }
     }
 }

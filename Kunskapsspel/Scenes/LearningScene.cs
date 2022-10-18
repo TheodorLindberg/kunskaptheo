@@ -49,8 +49,15 @@ namespace Kunskapsspel.Scenes
             learningTime.Controls.Add(button);
             button.Click += Button_Click;
 
-            // Gör timer & knappar :)
-
+            Label timeTextBox = new Label()
+            {
+                Size = new Size(learningTime.Width, 600),
+                Location = new Point(0, problemTextBox.Height + 300),
+                Font = new Font(new FontFamily("Comic Sans MS"), 25),
+                Text = "0",
+            };
+            learningTime.Controls.Add(timeTextBox);
+            learningTime.timeTextBox = timeTextBox;
         }
 
         private void Button_Click(object sender, EventArgs e)
