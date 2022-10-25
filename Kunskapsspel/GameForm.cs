@@ -25,6 +25,5 @@ namespace Kunskapsspel
             LearningTime learningTime = new LearningTime();
             learningTime.Show();
         }
-        
     }
 }

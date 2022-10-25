@@ -102,6 +102,12 @@
     <Content Include="Resources\Capybara.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Problems.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Solution.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\vine-boom.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

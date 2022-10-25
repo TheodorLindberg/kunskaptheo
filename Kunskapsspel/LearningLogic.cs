@@ -23,6 +23,8 @@ namespace Kunskapsspel
         public LearningLogic(LearningTime learningTime)
         {
             activeProblem = new Problems();
+            MessageBox.Show("");
+
             CreateTimer();
             this.learningTime = learningTime;
         }
