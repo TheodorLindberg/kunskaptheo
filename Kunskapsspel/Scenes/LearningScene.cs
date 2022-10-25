@@ -68,7 +68,7 @@ namespace Kunskapsspel.Scenes
 
         private void PlaySound()
         {
-            SoundPlayer simpleSound = new SoundPlayer("vine-boom.wav");
+            SoundPlayer simpleSound = new SoundPlayer("./Resources/vine-boom.wav");
             simpleSound.Play();
         }
     }
