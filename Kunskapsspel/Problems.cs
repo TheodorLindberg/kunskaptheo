@@ -12,9 +12,9 @@ namespace Kunskapsspel
     {
         public string problem;
         public string solution;
-        StreamReader problemReader = new StreamReader("./Resources/Problems.txt");
-        StreamReader solutionReader = new StreamReader("./Resources/Solution.txt");
-
+        private string problemsFileName = "./Resources/Problems.txt";
+        private string solutionFileName = "./Resources/Solution.txt";
+        
         public Problems()
         {
             CreateProblem();
@@ -22,15 +22,14 @@ namespace Kunskapsspel
 
         private void CreateProblem()
         {
-            if (problemReader.ReadToEnd().Length != solutionReader.ReadToEnd().Length)
+            if (File.ReadAllLines(problemsFileName).Length != File.ReadAllLines(solutionFileName).Length)
                 return;
 
             Random random = new Random();
-            int line = random.Next(problemReader.ReadToEnd().Length);
+            int line = random.Next(File.ReadAllLines(problemsFileName).Length);
 
             problem = File.ReadLines("./Resources/Problems.txt").Skip(line).Take(1).First();
             solution = File.ReadLines("./Resources/Solution.txt").Skip(line).Take(1).First();
-
         }
     }
 }
