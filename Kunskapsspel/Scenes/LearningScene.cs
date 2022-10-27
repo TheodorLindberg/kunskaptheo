@@ -11,31 +11,36 @@ namespace Kunskapsspel.Scenes
 {
     internal class LearningScene
     {
-
-        public LearningScene(LearningTime learningTime)
+        LearningLogic learningLogic;
+        string answer;
+        TextBox answerTextBox;
+        public LearningScene(LearningTime learningTime, LearningLogic learningLogic)
         {
             CreateObjects(learningTime);
+
+            this.learningLogic = learningLogic;
         }
 
         private void CreateObjects(LearningTime learningTime)
         {
+            Problems problems = new Problems();
             TextBox problemTextBox = new TextBox()
             {
                 Size = new Size(learningTime.Width, 300),
                 Location = new Point(0, 0),
                 Font = new Font(new FontFamily("Comic Sans MS"), 25),
-                Text = "Supersvårt problem D:",
+                Text = problems.problem,
                 TabStop = false,
                 Enabled = false,
             };
             learningTime.Controls.Add(problemTextBox);
 
-            TextBox answerTextBox = new TextBox()
+            answerTextBox = new TextBox()
             {
                 Size = new Size(learningTime.Width, 300),
                 Location = new Point(0, problemTextBox.Height),
                 Font = new Font(new FontFamily("Comic Sans MS"), 25),
-                Text = "Lösning :)",
+                Text = problems.solution,
                 TabStop = false,
             };
             learningTime.Controls.Add(answerTextBox);
@@ -44,7 +49,7 @@ namespace Kunskapsspel.Scenes
             {
                 Size = new Size(100, 100),
                 Location = new Point(500, 600),
-
+                Text = "Svara",
             };
             learningTime.Controls.Add(button);
             button.Click += Button_Click;
@@ -62,8 +67,9 @@ namespace Kunskapsspel.Scenes
 
         private void Button_Click(object sender, EventArgs e)
         {
+            answer = answerTextBox.Text;
             PlaySound();
-
+            learningLogic.CheckAnswer(answer);
         }
 
         private void PlaySound()

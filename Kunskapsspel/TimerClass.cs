@@ -11,7 +11,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace Kunskapsspel
 {
-    internal class TimerClass
+    public class TimerClass
     {
         private Timer timer;
         private readonly MovementClass movmentClass;
@@ -67,13 +67,18 @@ namespace Kunskapsspel
             if (Keyboard.IsKeyDown(Key.Space))
             {
                 spaceDown = true;
-                interact.Interact(testScene.interactableObjects, player);
+                interact.Interact(testScene.interactableObjects, player, this);
             }
         }
 
         public void Stop()
         {
             timer.Stop();
+        }
+
+        public void Start()
+        {
+            timer.Start();
         }
     }
 }

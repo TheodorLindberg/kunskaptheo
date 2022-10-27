@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Kunskapsspel.Scenes
 {
-    internal class TestScene : GraficalScene
+    public class TestScene : GraficalScene
     {
         public TestScene(GameForm gameForm) : base(gameForm)
         {

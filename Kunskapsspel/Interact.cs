@@ -17,7 +17,7 @@ namespace Kunskapsspel
 
         }
 
-        public void Interact(List<InteractableObject> interactableObjects, Player player)
+        public void Interact(List<InteractableObject> interactableObjects, Player player, TimerClass timerClass)
         {
             if (!Keyboard.IsKeyDown(Key.Space))
                 return;
@@ -26,7 +26,7 @@ namespace Kunskapsspel
                 if (interactableObject.CanBeInteractedWith(player))
                 {
                     MessageBox.Show("Interact succesfull");
-                    LearningTime learningTime = new LearningTime();
+                    LearningTime learningTime = new LearningTime(timerClass);
                     learningTime.Show();
                 }
             }

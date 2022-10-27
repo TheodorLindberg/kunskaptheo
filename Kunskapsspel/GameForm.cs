@@ -22,8 +22,6 @@ namespace Kunskapsspel
             testScene = new TestScene(this);
             TimerClass timer = new TimerClass(testScene, this);
 
-            LearningTime learningTime = new LearningTime();
-            learningTime.Show();
         }
     }
 }

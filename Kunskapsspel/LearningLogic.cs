@@ -20,6 +20,34 @@ namespace Kunskapsspel
             }
             set { }
         }
+        
+        public void CheckAnswer(string answer)
+        {
+            foreach (char c in answer)
+            {
+                if (c < '0' || c > '9')
+                {
+                    MessageBox.Show("Svaret innehöll inte bara siffror.");
+                    return;
+                }
+            }
+            
+            if (answer == activeProblem.solution)
+                RightAnswer();
+            else
+                WrongAnswer();    
+        }
+        
+        private void WrongAnswer()
+        {
+            MessageBox.Show("Din mamma");
+        }
+
+        private void RightAnswer()
+        {
+            MessageBox.Show("Deez nuts");
+        }
+        
         public LearningLogic(LearningTime learningTime)
         {
             activeProblem = new Problems();
