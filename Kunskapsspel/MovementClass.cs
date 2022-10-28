@@ -20,7 +20,7 @@ namespace Kunskapsspel
         const Key backwardsKey = Key.S;
         const Key rightKey = Key.D;
         public MovementClass() { }
-        
+
         private Tuple<int, int> GetOffset()
         {
             int x = 0;
@@ -38,11 +38,14 @@ namespace Kunskapsspel
             return Tuple.Create(x, y);
         }
 
-        public void Move(PictureBox background, List<InteractableObject> interactableObjects)
+        public void Move(PictureBox background, List<InteractableObject> interactableObjects, Player player)
         {
             (int x, int y) = GetOffset();
 
-            if (!CanMoveTo(background.Size, background.Location.X + x, background.Location.Y + y))
+            Debug.WriteLine(x);
+            Debug.WriteLine(y);
+
+            if (!CanMoveTo(background, x, y, player))
                 return;
 
             foreach (InteractableObject pb in interactableObjects)
@@ -51,10 +54,13 @@ namespace Kunskapsspel
             background.Location = new Point(background.Location.X + x, background.Location.Y + y);
         }
 
-        private bool CanMoveTo(Size backgroundSize ,int x, int y)
+        
+
+        private bool CanMoveTo(PictureBox floor ,int x, int y, Player player)
         {
-            if (0 >= x && x >= - (backgroundSize.Width - Screen.PrimaryScreen.Bounds.Width) && 0 >= y && y >= -(backgroundSize.Height - Screen.PrimaryScreen.Bounds.Height))            //Refactor
-                return true;
+            if (floor.Location.X + x <= player.LeftLocation && floor.Location.X + floor.Width + x >= player.RightLocation)
+                if (floor.Location.Y + y <= player.BottomLocation && floor.Location.Y + floor.Height + y >= player.BottomLocation)
+                    return true;
 
             return false;
         }

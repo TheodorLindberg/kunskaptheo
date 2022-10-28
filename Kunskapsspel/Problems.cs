@@ -11,9 +11,10 @@ namespace Kunskapsspel
     internal class Problems
     {
         public string problem;
+        public string answerFormat;
         public string solution;
-        private string problemsFileName = "./Resources/Problems.txt";
-        private string solutionFileName = "./Resources/Solution.txt";
+        private const string problemsFileName = "./Resources/Problems.txt";
+        private const string solutionFileName = "./Resources/Solution.txt";
         
         public Problems()
         {
@@ -28,8 +29,12 @@ namespace Kunskapsspel
             Random random = new Random();
             int line = random.Next(File.ReadAllLines(problemsFileName).Length);
 
-            problem = File.ReadLines("./Resources/Problems.txt").Skip(line).Take(1).First();
-            solution = File.ReadLines("./Resources/Solution.txt").Skip(line).Take(1).First();
+            problem = File.ReadLines(problemsFileName).Skip(line).Take(1).First();
+
+            string[] diviadedLine = File.ReadLines(solutionFileName).Skip(line).Take(1).First().Split(';');
+
+            answerFormat = diviadedLine[0];
+            solution = diviadedLine[1];
         }
     }
 }

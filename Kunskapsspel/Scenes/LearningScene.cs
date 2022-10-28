@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Media;
@@ -16,31 +17,39 @@ namespace Kunskapsspel.Scenes
         TextBox answerTextBox;
         public LearningScene(LearningTime learningTime, LearningLogic learningLogic)
         {
-            CreateObjects(learningTime);
-
             this.learningLogic = learningLogic;
+
+            CreateObjects(learningTime);
         }
 
         private void CreateObjects(LearningTime learningTime)
         {
-            Problems problems = new Problems();
             TextBox problemTextBox = new TextBox()
             {
                 Size = new Size(learningTime.Width, 300),
                 Location = new Point(0, 0),
                 Font = new Font(new FontFamily("Comic Sans MS"), 25),
-                Text = problems.problem,
+                Text = learningLogic.GetActiveProblem.problem,
                 TabStop = false,
                 Enabled = false,
             };
             learningTime.Controls.Add(problemTextBox);
 
+            Label answerFormatLbl = new Label()
+            {
+                Size = new Size(learningLogic.GetActiveProblem.answerFormat.Length * 20, 100),
+                Location = new Point(0, problemTextBox.Height),
+                Text = learningLogic.GetActiveProblem.answerFormat,
+                Font = new Font(new FontFamily("Comic Sans MS"), 25),
+            };
+            learningTime.Controls.Add(answerFormatLbl);
+
             answerTextBox = new TextBox()
             {
                 Size = new Size(learningTime.Width, 300),
-                Location = new Point(0, problemTextBox.Height),
+                Location = new Point(answerFormatLbl.Width, problemTextBox.Height),
                 Font = new Font(new FontFamily("Comic Sans MS"), 25),
-                Text = problems.solution,
+                Text = learningLogic.GetActiveProblem.solution,
                 TabStop = false,
             };
             learningTime.Controls.Add(answerTextBox);

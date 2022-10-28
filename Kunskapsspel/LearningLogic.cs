@@ -9,9 +9,9 @@ namespace Kunskapsspel
 {
     internal class LearningLogic
     {
-        private Problems activeProblem;
+        private readonly Problems activeProblem;
         private Timer solutionTimer;
-        LearningTime learningTime;
+        readonly LearningTime learningTime;
         public Problems GetActiveProblem 
         {
             get
@@ -20,9 +20,18 @@ namespace Kunskapsspel
             }
             set { }
         }
-        
+
+        public LearningLogic(LearningTime learningTime)
+        {
+            activeProblem = new Problems();
+
+            CreateTimer();
+            this.learningTime = learningTime;
+        }
+
         public void CheckAnswer(string answer)
         {
+            answer = answer.Trim();
             foreach (char c in answer)
             {
                 if (c < '0' || c > '9')
@@ -48,13 +57,7 @@ namespace Kunskapsspel
             MessageBox.Show("Deez nuts");
         }
         
-        public LearningLogic(LearningTime learningTime)
-        {
-            activeProblem = new Problems();
-
-            CreateTimer();
-            this.learningTime = learningTime;
-        }
+        
 
         private Problems CreateProblem()
         {

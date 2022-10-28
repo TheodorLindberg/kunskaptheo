@@ -40,6 +40,14 @@ namespace Kunskapsspel
             set { }
         }
 
+        public int BottomLocation
+        {
+            get
+            {
+                return body.Location.Y + body.Height;
+            }
+            set { }
+        }
         public Player(Form form, Image image)
         {
             CreateBody(form, image);

@@ -53,7 +53,9 @@ namespace Kunskapsspel
 
         private void TickEvent(object sender, EventArgs e)
         {
-            movmentClass.Move(testScene.background, testScene.interactableObjects);
+            if (Keyboard.IsKeyDown(Key.W) || Keyboard.IsKeyDown(Key.A) || Keyboard.IsKeyDown(Key.S) || Keyboard.IsKeyDown(Key.D))
+                movmentClass.Move(testScene.background, testScene.interactableObjects, player);
+
             Interact();
         }
         private void Interact()
