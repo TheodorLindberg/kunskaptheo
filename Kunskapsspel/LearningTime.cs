@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Kunskapsspel
 {
-    public partial class LearningTime : Form
+    public partial class LearningTime : System.Windows.Forms.Form
     {
         public Label timeTextBox;
         private TimerClass timerClass;

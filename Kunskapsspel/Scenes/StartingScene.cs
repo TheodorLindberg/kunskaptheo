@@ -1,27 +1,21 @@
-﻿using Kunskapsspel.Scenes;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Kunskapsspel
+namespace Kunskapsspel.Scenes
 {
-    public partial class Form : System.Windows.Forms.Form
+    class StartingScene
     {
-        readonly TestScene testScene;
-        public Form()
+        StartScreenForm startScreen;
+        public StartingScene(StartScreenForm startScreen)
         {
-            InitializeComponent();
-            this.WindowState = FormWindowState.Maximized;
-            FormBorderStyle = FormBorderStyle.None;
-
-            testScene = new TestScene(this);
-            TimerClass timer = new TimerClass(testScene, this);
+            startScreen.WindowState = FormWindowState.Maximized;
+            startScreen.FormBorderStyle = FormBorderStyle.None;
+            this.startScreen = startScreen;
             CreateExitButton();
         }
 
@@ -29,12 +23,12 @@ namespace Kunskapsspel
         {
             Button exitBtn = new Button()
             {
-                Size = new Size(50,50),
+                Size = new Size(50, 50),
                 Location = new Point(Screen.PrimaryScreen.Bounds.Width - 50, 0),
                 Text = "Exit",
                 TabStop = false,
             };
-            Controls.Add(exitBtn);
+            startScreen.Controls.Add(exitBtn);
             exitBtn.BringToFront();
             exitBtn.Click += ExitBtn_Click;
 
@@ -42,7 +36,8 @@ namespace Kunskapsspel
 
         private void ExitBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            startScreen.Close();
         }
+
     }
 }

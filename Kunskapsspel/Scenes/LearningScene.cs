@@ -59,6 +59,7 @@ namespace Kunskapsspel.Scenes
                 Size = new Size(100, 100),
                 Location = new Point(500, 600),
                 Text = "Svara",
+                TabStop = false,
             };
             learningTime.Controls.Add(button);
             button.Click += Button_Click;
@@ -77,14 +78,13 @@ namespace Kunskapsspel.Scenes
         private void Button_Click(object sender, EventArgs e)
         {
             answer = answerTextBox.Text;
-            PlaySound();
             learningLogic.CheckAnswer(answer);
         }
 
-        private void PlaySound()
-        {
-            SoundPlayer simpleSound = new SoundPlayer("./Resources/vine-boom.wav");
-            simpleSound.Play();
-        }
+        //private void PlaySound()
+        //{
+        //    SoundPlayer simpleSound = new SoundPlayer("./Resources/vine-boom.wav");
+        //    simpleSound.Play();
+        //}
     }
 }

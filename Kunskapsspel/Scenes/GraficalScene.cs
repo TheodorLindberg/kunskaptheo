@@ -12,11 +12,11 @@ namespace Kunskapsspel
         public PictureBox background;
         public List<InteractableObject> interactableObjects = new List<InteractableObject>();
         public List<PictureBox> allPictureBoxes = new List<PictureBox>();
-        public GameForm gameForm;
+        public Form form;
 
-        public GraficalScene(GameForm gameForm)
+        public GraficalScene(Form form)
         {
-            this.gameForm = gameForm;
+            this.form = form;
         }
 
         public virtual void CreateInteractableObjects() { }

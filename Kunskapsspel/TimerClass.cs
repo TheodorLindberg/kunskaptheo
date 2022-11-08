@@ -16,23 +16,24 @@ namespace Kunskapsspel
         private Timer timer;
         private readonly MovementClass movmentClass;
         private readonly TestScene testScene;
-        private readonly GameForm gameForm;
+        private readonly Form gameForm;
         private bool spaceDown = false;
         private InteractClass interact;
         Player player;
-        public TimerClass(TestScene testScene, GameForm gameForm)
+        public TimerClass(TestScene testScene, Form gameForm)
         {
             this.testScene = testScene;
             this.gameForm = gameForm;
             movmentClass = new MovementClass();
 
-            Button btn = new Button()
+            Button btn = new Button()                               // Byt plats på var man skapar denna knapp
             {
                 Size = new Size(100,100),
                 Location = new Point(100,100),
+                TabStop = false,
             };
             btn.Click += StartGame;
-            testScene.gameForm.Controls.Add(btn);
+            testScene.form.Controls.Add(btn);
             btn.BringToFront();
         }
 

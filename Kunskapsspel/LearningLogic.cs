@@ -49,12 +49,12 @@ namespace Kunskapsspel
         
         private void WrongAnswer()
         {
-            MessageBox.Show("Din mamma");
+            MessageBox.Show("Fel Svar");
         }
 
         private void RightAnswer()
         {
-            MessageBox.Show("Deez nuts");
+            MessageBox.Show("Rätt svar");
         }
         
         

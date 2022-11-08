@@ -13,7 +13,7 @@ namespace Kunskapsspel.Scenes
 {
     public class TestScene : GraficalScene
     {
-        public TestScene(GameForm gameForm) : base(gameForm)
+        public TestScene(Form gameForm) : base(gameForm)
         {
             CreateBackground();
             CreateInteractableObjects();
@@ -30,14 +30,14 @@ namespace Kunskapsspel.Scenes
                 Image = Image.FromFile(@"./Resources/Capybara.jpg"),
                 SizeMode = PictureBoxSizeMode.StretchImage,
             };
-            gameForm.Controls.Add(background);
+            form.Controls.Add(background);
             allPictureBoxes.Add(background);
         }
         public override void CreateInteractableObjects()
         {
             for (int i = 1; i <= 4; i++)
             {
-                InteractableObject interactableObject = new InteractableObject(new Point(1500 * i, 500), new Size(300,300),Image.FromFile(@"./Resources/Capybara.jpg"), gameForm);
+                InteractableObject interactableObject = new InteractableObject(new Point(1500 * i, 500), new Size(300,300),Image.FromFile(@"./Resources/Capybara.jpg"), form);
                 interactableObject.itemBody.BringToFront();
                 allPictureBoxes.Add(interactableObject.itemBody);
                 interactableObjects.Add(interactableObject);

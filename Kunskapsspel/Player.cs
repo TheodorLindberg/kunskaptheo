@@ -48,12 +48,12 @@ namespace Kunskapsspel
             }
             set { }
         }
-        public Player(Form form, Image image)
+        public Player(System.Windows.Forms.Form form, Image image)
         {
             CreateBody(form, image);
         }
 
-        private void CreateBody(Form form, Image image)
+        private void CreateBody(System.Windows.Forms.Form form, Image image)
         {
             body = new PictureBox()
             {
