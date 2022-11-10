@@ -16,10 +16,10 @@ namespace Kunskapsspel.Scenes
             startScreen.WindowState = FormWindowState.Maximized;
             startScreen.FormBorderStyle = FormBorderStyle.None;
             this.startScreen = startScreen;
-            CreateExitButton();
+            CreateButtons();
         }
 
-        private void CreateExitButton()
+        private void CreateButtons()
         {
             Button exitBtn = new Button()
             {
@@ -32,6 +32,24 @@ namespace Kunskapsspel.Scenes
             exitBtn.BringToFront();
             exitBtn.Click += ExitBtn_Click;
 
+
+            Button startGameBtn = new Button()
+            {
+                Size = new Size(50, 50),
+                Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2 - 50, 600),
+                Text = "Start",
+                TabStop = false,
+            };
+            startScreen.Controls.Add(startGameBtn);
+            startGameBtn.BringToFront();
+            startGameBtn.Click += StartGame_Click;
+        }
+
+        private void StartGame_Click(object sender, EventArgs e)
+        {
+            GameForm gameForm = new GameForm();
+            gameForm.Show();
+            startScreen.Hide();
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)

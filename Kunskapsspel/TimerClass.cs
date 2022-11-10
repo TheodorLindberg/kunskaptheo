@@ -16,11 +16,11 @@ namespace Kunskapsspel
         private Timer timer;
         private readonly MovementClass movmentClass;
         private readonly TestScene testScene;
-        private readonly Form gameForm;
+        private readonly GameForm gameForm;
         private bool spaceDown = false;
         private InteractClass interact;
         Player player;
-        public TimerClass(TestScene testScene, Form gameForm)
+        public TimerClass(TestScene testScene, GameForm gameForm)
         {
             this.testScene = testScene;
             this.gameForm = gameForm;

@@ -57,13 +57,6 @@ namespace Kunskapsspel
             MessageBox.Show("Rätt svar");
         }
         
-        
-
-        private Problems CreateProblem()
-        {
-            return new Problems();
-        }
-
         private void CreateTimer()
         {
             solutionTimer = new Timer()
@@ -73,6 +66,7 @@ namespace Kunskapsspel
             solutionTimer.Tick += UppdateTime;
             solutionTimer.Start();
         }
+
         private int seconds = 0;
         private int minutes = 0;
 

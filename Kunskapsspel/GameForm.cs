@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace Kunskapsspel
 {
-    public partial class Form : System.Windows.Forms.Form
+    public partial class GameForm : System.Windows.Forms.Form
     {
         readonly TestScene testScene;
-        public Form()
+        public GameForm()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;

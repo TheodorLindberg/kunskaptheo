@@ -1,6 +1,6 @@
 ﻿namespace Kunskapsspel
 {
-    partial class Form
+    partial class GameForm
     {
         /// <summary>
         /// Required designer variable.

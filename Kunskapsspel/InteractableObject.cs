@@ -12,7 +12,7 @@ namespace Kunskapsspel
     public class InteractableObject
     {
         public PictureBox itemBody;
-        private readonly Form form;
+        private readonly GameForm form;
         public bool isCurrentlyInUse = false;
 
         public int LeftX
@@ -49,7 +49,7 @@ namespace Kunskapsspel
         }
 
 
-        public InteractableObject(Point ItemTopLeftPoint, Size ItemSize, Image image, Form form)
+        public InteractableObject(Point ItemTopLeftPoint, Size ItemSize, Image image, GameForm form)
         {
             this.form = form;
             CreateBody(ItemTopLeftPoint, ItemSize, image);

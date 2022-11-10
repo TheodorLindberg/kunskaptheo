@@ -13,7 +13,7 @@ namespace Kunskapsspel.Scenes
 {
     public class TestScene : GraficalScene
     {
-        public TestScene(Form gameForm) : base(gameForm)
+        public TestScene(GameForm gameForm) : base(gameForm)
         {
             CreateBackground();
             CreateInteractableObjects();

@@ -15,7 +15,8 @@ namespace Kunskapsspel
         public string solution;
         private const string problemsFileName = "./Resources/Problems.txt";
         private const string solutionFileName = "./Resources/Solution.txt";
-        
+        public List<int> problemOrder;
+
         public Problems()
         {
             CreateProblem();
@@ -26,8 +27,11 @@ namespace Kunskapsspel
             if (File.ReadAllLines(problemsFileName).Length != File.ReadAllLines(solutionFileName).Length)
                 return;
 
-            Random random = new Random();
-            int line = random.Next(File.ReadAllLines(problemsFileName).Length);
+            problemOrder = Enumerable.Range(1, File.ReadAllLines(problemsFileName).Length - 1).ToList();
+
+            int line = problemOrder[0];
+
+            problemOrder.RemoveAt(0);
 
             problem = File.ReadLines(problemsFileName).Skip(line).Take(1).First();
 
@@ -35,6 +39,21 @@ namespace Kunskapsspel
 
             answerFormat = diviadedLine[0];
             solution = diviadedLine[1];
+        }
+        
+        private static Random rng = new Random();
+
+        public static void Shuffle(List<int> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                int value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
         }
     }
 }
