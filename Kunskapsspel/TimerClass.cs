@@ -40,7 +40,7 @@ namespace Kunskapsspel
         private void StartGame(object sender, EventArgs e)
         {
             interact = new InteractClass();
-            player = new Player(gameForm, Image.FromFile(@"./Resources/Capybara.jpg"));
+            player = new Player(gameForm, Image.FromFile(@"./Resources/amogus.png"));
 
             Button btn = (Button)sender;
             btn.Hide();

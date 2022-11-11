@@ -16,11 +16,21 @@ namespace Kunskapsspel.Scenes
             startScreen.WindowState = FormWindowState.Maximized;
             startScreen.FormBorderStyle = FormBorderStyle.None;
             this.startScreen = startScreen;
-            CreateButtons();
+            CreateControls();
         }
 
-        private void CreateButtons()
+        private void CreateControls()
         {
+            PictureBox background = new PictureBox()
+            {
+                Size = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height),
+                Location = new Point(0, 0),
+                Image = Image.FromFile(@"./Resources/Capybara.jpg"),
+                SizeMode = PictureBoxSizeMode.StretchImage
+            };
+            startScreen.Controls.Add(background);
+
+
             Button exitBtn = new Button()
             {
                 Size = new Size(50, 50),
@@ -43,6 +53,18 @@ namespace Kunskapsspel.Scenes
             startScreen.Controls.Add(startGameBtn);
             startGameBtn.BringToFront();
             startGameBtn.Click += StartGame_Click;
+
+
+            ComboBox chapters = new ComboBox()
+            {
+                Location = new Point(50, 50),
+                Size = new Size(500, 500),
+                Font = new Font(new FontFamily("Comic Sans MS"), 25),
+                DropDownStyle = ComboBoxStyle.DropDownList,
+            };
+            chapters.Items.Add("alkoholism");
+            startScreen.Controls.Add(chapters);
+            chapters.BringToFront();
         }
 
         private void StartGame_Click(object sender, EventArgs e)

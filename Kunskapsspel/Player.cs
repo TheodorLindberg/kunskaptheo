@@ -48,12 +48,12 @@ namespace Kunskapsspel
             }
             set { }
         }
-        public Player(System.Windows.Forms.Form form, Image image)
+        public Player(GameForm gameForm, Image image)
         {
-            CreateBody(form, image);
+            CreateBody(gameForm, image);
         }
 
-        private void CreateBody(System.Windows.Forms.Form form, Image image)
+        private void CreateBody(GameForm gameForm, Image image)
         {
             body = new PictureBox()
             {
@@ -61,8 +61,11 @@ namespace Kunskapsspel
                 Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2 - bodySize.Width/2, Screen.PrimaryScreen.Bounds.Height / 2 - bodySize.Height / 2),
                 Image = image,
                 SizeMode = PictureBoxSizeMode.StretchImage,
+                BackColor = Color.Transparent,
+                Parent = gameForm.background,
+
             };
-            form.Controls.Add(body);
+            gameForm.Controls.Add(body);
             body.BringToFront();
         }
     }

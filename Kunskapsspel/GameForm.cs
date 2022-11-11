@@ -13,14 +13,15 @@ namespace Kunskapsspel
 {
     public partial class GameForm : System.Windows.Forms.Form
     {
+        public PictureBox background;
         readonly TestScene testScene;
         public GameForm()
         {
             InitializeComponent();
             this.WindowState = FormWindowState.Maximized;
             FormBorderStyle = FormBorderStyle.None;
-
             testScene = new TestScene(this);
+            background = testScene.background;
             TimerClass timer = new TimerClass(testScene, this);
             CreateExitButton();
         }
