@@ -26,7 +26,7 @@ namespace Kunskapsspel.Scenes
             background = new PictureBox()
             {
                 Size = new Size(10000, 10000),
-                Location = new Point(-20, -20),
+                Location = new Point(0,0),
                 Image = Image.FromFile(@"./Resources/Capybara.jpg"),
                 SizeMode = PictureBoxSizeMode.StretchImage,
             };

@@ -21,41 +21,35 @@ namespace Kunskapsspel
         private bool spaceDown = false;
         private InteractClass interact;
         Player player;
-        public TimerClass(TestScene testScene, GameForm gameForm)
+
+        public delegate void TickHandler();
+
+        private TickHandler handler;
+        public TickHandler Tick => handler;
+
+        public TimerClass(TickHandler handler, TestScene testScene, GameForm gameForm)
         {
+            this.handler = handler;
             this.testScene = testScene;
             this.gameForm = gameForm;
-            movmentClass = new MovementClass();
             StartGame();
         }
 
         private void StartGame()
         {
             interact = new InteractClass();
-            player = new Player(gameForm, Image.FromFile(@"./Resources/amogus.png"));
 
             timer = new Timer()
             {
                 Interval = 20,
             };
-            timer.Tick += TickEvent;
+            timer.Tick += _tick;
             timer.Start();
         }
 
-        private void TickEvent(object sender, EventArgs e)
+        private void _tick(object sender, EventArgs args)
         {
-
-            if (Keyboard.IsKeyDown(Key.W) || Keyboard.IsKeyDown(Key.A) || Keyboard.IsKeyDown(Key.S) || Keyboard.IsKeyDown(Key.D))
-                movmentClass.Move(testScene.background, testScene.interactableObjects, player);
-
-            if (Keyboard.IsKeyUp(Key.Space))
-                spaceDown = false;
-
-            if (Keyboard.IsKeyDown(Key.Space))
-            {
-                Interact();
-            }
-
+            handler.Invoke();
         }
 
         private void Interact()

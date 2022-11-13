@@ -59,7 +59,6 @@ namespace Kunskapsspel
         }
 
 
-
         private Tuple<bool, bool> CanMoveTo(PictureBox floor, int x, int y, Player player)
         {
             bool CanGoToX = false;

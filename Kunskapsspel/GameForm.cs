@@ -15,6 +15,11 @@ namespace Kunskapsspel
     {
         public PictureBox background;
         readonly TestScene testScene;
+        public TimerClass timerClass;
+
+        Player player;
+
+
         private readonly StartScreenForm startScreenForm;
         public GameForm(StartScreenForm startScreenForm)
         {
@@ -24,9 +29,13 @@ namespace Kunskapsspel
             FormBorderStyle = FormBorderStyle.None;
             testScene = new TestScene(this);
             background = testScene.background;
-            new TimerClass(testScene, this);
+            new TimerClass(TickEvent, testScene, this);
+            
             CreateExitButton();
             BackColor = Color.Green;
+
+            player = new Player(this);
+
         }
 
         private void CreateExitButton()
@@ -42,6 +51,19 @@ namespace Kunskapsspel
             Controls.Add(exitBtn);
             exitBtn.BringToFront();
             exitBtn.Click += ExitBtn_Click;
+
+
+            Image image = Image.FromFile(@"./Resources/Capybara.jpg");
+            PictureBox box = new PictureBox()
+            {
+                Size = new Size(100,100),
+                Location = new Point(200,200),
+                Image = image,
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                BackColor = Color.Transparent,
+                Parent = background
+            };
+
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
@@ -49,5 +71,13 @@ namespace Kunskapsspel
             this.Close();
             startScreenForm.Show();
         }
+        private void TickEvent()
+        {
+            Console.WriteLine("Update");
+            player.Update();
+            this.Update();
+            
+        }
+
     }
 }

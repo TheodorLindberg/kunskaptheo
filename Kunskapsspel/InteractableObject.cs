@@ -39,15 +39,7 @@ namespace Kunskapsspel
             }
             set { }
         }
-        public int Bot
-        {
-            get
-            {
-                return itemBody.Location.Y + itemBody.Height;
-            }
-            set { }
-        }
-
+        public int Bot => itemBody.Location.Y + itemBody.Height;
 
         public InteractableObject(Point ItemTopLeftPoint, Size ItemSize, Image image, GameForm form)
         {
@@ -63,6 +55,7 @@ namespace Kunskapsspel
                 Size = ItemSize,
                 Image = image,
                 SizeMode = PictureBoxSizeMode.StretchImage,
+                Parent=form.background,
             };
             form.Controls.Add(itemBody);
         }
