@@ -15,14 +15,16 @@ namespace Kunskapsspel
     {
         public PictureBox background;
         readonly TestScene testScene;
-        public GameForm()
+        private readonly StartScreenForm startScreenForm;
+        public GameForm(StartScreenForm startScreenForm)
         {
             InitializeComponent();
+            this.startScreenForm = startScreenForm;
             this.WindowState = FormWindowState.Maximized;
             FormBorderStyle = FormBorderStyle.None;
             testScene = new TestScene(this);
             background = testScene.background;
-            TimerClass timer = new TimerClass(testScene, this);
+            new TimerClass(testScene, this);
             CreateExitButton();
             BackColor = Color.Green;
         }
@@ -35,6 +37,7 @@ namespace Kunskapsspel
                 Location = new Point(Screen.PrimaryScreen.Bounds.Width - 50, 0),
                 Text = "Exit",
                 TabStop = false,
+                FlatStyle = FlatStyle.Flat,
             };
             Controls.Add(exitBtn);
             exitBtn.BringToFront();
@@ -44,6 +47,7 @@ namespace Kunskapsspel
         private void ExitBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+            startScreenForm.Show();
         }
     }
 }

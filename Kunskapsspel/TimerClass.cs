@@ -25,25 +25,14 @@ namespace Kunskapsspel
             this.testScene = testScene;
             this.gameForm = gameForm;
             movmentClass = new MovementClass();
-
-            Button btn = new Button()                               // Byt plats på var man skapar denna knapp
-            {
-                Size = new Size(100,100),
-                Location = new Point(100,100),
-                TabStop = false,
-            };
-            btn.Click += StartGame;
-            testScene.form.Controls.Add(btn);
-            btn.BringToFront();
+            StartGame();
         }
 
-        private void StartGame(object sender, EventArgs e)
+        private void StartGame()
         {
             interact = new InteractClass();
             player = new Player(gameForm, Image.FromFile(@"./Resources/amogus.png"));
 
-            Button btn = (Button)sender;
-            btn.Hide();
             timer = new Timer()
             {
                 Interval = 20,
@@ -54,24 +43,33 @@ namespace Kunskapsspel
 
         private void TickEvent(object sender, EventArgs e)
         {
+
             if (Keyboard.IsKeyDown(Key.W) || Keyboard.IsKeyDown(Key.A) || Keyboard.IsKeyDown(Key.S) || Keyboard.IsKeyDown(Key.D))
                 movmentClass.Move(testScene.background, testScene.interactableObjects, player);
 
-            Interact();
-        }
-        private void Interact()
-        {
             if (Keyboard.IsKeyUp(Key.Space))
                 spaceDown = false;
 
+            if (Keyboard.IsKeyDown(Key.Space))
+            {
+                Interact();
+            }
+
+            UpdatePlayerGrafics();
+        }
+
+        private void UpdatePlayerGrafics()
+        {
+            player.body.Hide();
+        }
+
+        private void Interact()
+        {
             if (spaceDown)
                 return;
 
-            if (Keyboard.IsKeyDown(Key.Space))
-            {
-                spaceDown = true;
-                interact.Interact(testScene.interactableObjects, player, this);
-            }
+            spaceDown = true;
+            interact.Interact(testScene.interactableObjects, player, this);
         }
 
         public void Stop()

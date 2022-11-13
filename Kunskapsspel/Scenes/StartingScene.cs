@@ -10,12 +10,12 @@ namespace Kunskapsspel.Scenes
 {
     class StartingScene
     {
-        StartScreenForm startScreen;
-        public StartingScene(StartScreenForm startScreen)
+        readonly StartScreenForm startScreenForm;
+        public StartingScene(StartScreenForm startScreenForm)
         {
-            startScreen.WindowState = FormWindowState.Maximized;
-            startScreen.FormBorderStyle = FormBorderStyle.None;
-            this.startScreen = startScreen;
+            startScreenForm.WindowState = FormWindowState.Maximized;
+            startScreenForm.FormBorderStyle = FormBorderStyle.None;
+            this.startScreenForm = startScreenForm;
             CreateControls();
         }
 
@@ -28,7 +28,7 @@ namespace Kunskapsspel.Scenes
                 Image = Image.FromFile(@"./Resources/Capybara.jpg"),
                 SizeMode = PictureBoxSizeMode.StretchImage
             };
-            startScreen.Controls.Add(background);
+            startScreenForm.Controls.Add(background);
 
 
             Button exitBtn = new Button()
@@ -38,7 +38,7 @@ namespace Kunskapsspel.Scenes
                 Text = "Exit",
                 TabStop = false,
             };
-            startScreen.Controls.Add(exitBtn);
+            startScreenForm.Controls.Add(exitBtn);
             exitBtn.BringToFront();
             exitBtn.Click += ExitBtn_Click;
 
@@ -50,7 +50,7 @@ namespace Kunskapsspel.Scenes
                 Text = "Start",
                 TabStop = false,
             };
-            startScreen.Controls.Add(startGameBtn);
+            startScreenForm.Controls.Add(startGameBtn);
             startGameBtn.BringToFront();
             startGameBtn.Click += StartGame_Click;
 
@@ -63,20 +63,20 @@ namespace Kunskapsspel.Scenes
                 DropDownStyle = ComboBoxStyle.DropDownList,
             };
             chapters.Items.Add("alkoholism");
-            startScreen.Controls.Add(chapters);
+            startScreenForm.Controls.Add(chapters);
             chapters.BringToFront();
         }
 
         private void StartGame_Click(object sender, EventArgs e)
         {
-            GameForm gameForm = new GameForm();
+            GameForm gameForm = new GameForm(startScreenForm);
             gameForm.Show();
-            startScreen.Hide();
+            startScreenForm.Hide();
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
         {
-            startScreen.Close();
+            startScreenForm.Close();
         }
 
     }

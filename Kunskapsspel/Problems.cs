@@ -27,7 +27,7 @@ namespace Kunskapsspel
             if (File.ReadAllLines(problemsFileName).Length != File.ReadAllLines(solutionFileName).Length)
                 return;
 
-            problemOrder = Enumerable.Range(1, File.ReadAllLines(problemsFileName).Length - 1).ToList();
+            problemOrder = Enumerable.Range(0,File.ReadAllLines(problemsFileName).Length).ToList();
 
             int line = problemOrder[0];
 
@@ -41,7 +41,7 @@ namespace Kunskapsspel
             solution = diviadedLine[1];
         }
         
-        private static Random rng = new Random();
+        private static readonly Random rng = new Random();
 
         public static void Shuffle(List<int> list)
         {
@@ -50,9 +50,7 @@ namespace Kunskapsspel
             {
                 n--;
                 int k = rng.Next(n + 1);
-                int value = list[k];
-                list[k] = list[n];
-                list[n] = value;
+                (list[n], list[k]) = (list[k], list[n]);
             }
         }
     }

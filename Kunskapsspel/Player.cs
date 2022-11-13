@@ -61,11 +61,11 @@ namespace Kunskapsspel
                 Location = new Point(Screen.PrimaryScreen.Bounds.Width / 2 - bodySize.Width/2, Screen.PrimaryScreen.Bounds.Height / 2 - bodySize.Height / 2),
                 Image = image,
                 SizeMode = PictureBoxSizeMode.StretchImage,
+                BackColor = Color.Transparent,
             };
             gameForm.Controls.Add(body);
             body.Parent = gameForm.background;
-            body.BackColor = Color.Transparent;
-            body.BringToFront();
+            //body.BringToFront();
         }
     }
 }
