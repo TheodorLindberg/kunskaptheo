@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Input;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace Kunskapsspel
@@ -55,12 +56,6 @@ namespace Kunskapsspel
                 Interact();
             }
 
-            UpdatePlayerGrafics();
-        }
-
-        private void UpdatePlayerGrafics()
-        {
-            player.body.Hide();
         }
 
         private void Interact()

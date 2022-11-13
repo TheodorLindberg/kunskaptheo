@@ -12,7 +12,7 @@ namespace Kunskapsspel
     public class Player
     {
         public PictureBox body;
-        private Size bodySize = new Size(200,200);
+        Size bodySize = new Size(200,200);
 
         public int LeftLocation 
         { 
@@ -65,7 +65,7 @@ namespace Kunskapsspel
             };
             gameForm.Controls.Add(body);
             body.Parent = gameForm.background;
-            //body.BringToFront();
+            
         }
     }
 }
