@@ -24,6 +24,7 @@ namespace Kunskapsspel
             background = testScene.background;
             TimerClass timer = new TimerClass(testScene, this);
             CreateExitButton();
+            BackColor = Color.Green;
         }
 
         private void CreateExitButton()
@@ -38,7 +39,6 @@ namespace Kunskapsspel
             Controls.Add(exitBtn);
             exitBtn.BringToFront();
             exitBtn.Click += ExitBtn_Click;
-
         }
 
         private void ExitBtn_Click(object sender, EventArgs e)
